@@ -41,18 +41,17 @@ if (budgetDay >= 1200){
 }
 
 getStatusIncome();
-function getExpensesMonth(am1, am2){
-  return am1+am2;
+function getExpensesMonth(amountOfExpenses1,amountOfExpenses2){
+  return amountOfExpenses1+amountOfExpenses2;
 }
 
-function getAccumulatedMonth(mon){
-  return mon-getExpensesMonth(amount1, amount2);
+function getAccumulatedMonth(monthIncome){
+  return monthIncome-getExpensesMonth(amount1, amount2);
 }
 
 let accumulatedMonth = getAccumulatedMonth(money);
 
-function getTargetMonth(mis){
-
-  return mis/getAccumulatedMonth(money);
+function getTargetMonth(needToCollect){git 
+  return needToCollect/getAccumulatedMonth(money);
 }
 
