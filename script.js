@@ -51,7 +51,7 @@ let appData = {
 
   getExpensesMonth: function(){
     let sum = 0;
-    for (var prop in appData.expenses) {
+    for (let prop in appData.expenses) {
     sum += +appData.expenses[prop];
   }
     appData.expensesMonth = sum;
