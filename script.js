@@ -27,7 +27,7 @@ let deposit = confirm('Есть ли у вас депозит в банке?');
 // let expenses2 = prompt('Введите вторую обязательную статью расходов?');
 // let amount2 = Number(prompt('Во сколько это обойдется?'));
 // let budgetMonth = money-(amount1+amount2);
-let mission = -1000000 ;
+let mission = 1000000 ;
 let period = 12;
 let budgetDay;
 let periodToAim;
@@ -49,13 +49,22 @@ let getExpensesMonth = function(){
   let num;
   for (let i=0; i<2; i++){
     expences[i] = prompt('Введите обязательную статью расходов?');
+
+    do {
     num = prompt('Во сколько это обойдется?');
-    if (isNumber(num)) {sum += +num}
-    else {alert("Это не число")};
-  }
-  console.log(sum);
-  return(sum);
+    if (isNumber(num)) {
+      sum += +num;
+    }
+    else {
+      alert("Это не число");
+    };
+    }
+    while (!isNumber(num));
+  };
+console.log(sum);
+return(sum);
 };
+
 
 let expencesAmount = getExpensesMonth(); 
 
