@@ -38,48 +38,51 @@ console.log(typeof deposit);
 // console.log('Цель заработать ' + mission + ' рублей/долларов/гривен/юани');
 console.log(addExpenses.toLowerCase());
 
-let getExpencesMonth = function(){
+let getExpensesMonth = function(){
   let sum = 0;
+  let num;
   for (let i=0; i<2; i++){
     expences[i] = prompt('Введите обязательную статью расходов?');
-    sum += +prompt('Во сколько это обойдется?');
+    num = prompt('Во сколько это обойдется?');
+    if (isNumber(num)) {sum += +num}
+    else {alert("Это не число")};
   }
   console.log(sum);
   return(sum);
 };
 
-let expencesAmount = getExpencesMonth(); 
+let expencesAmount = getExpensesMonth(); 
 
 
 console.log(addExpenses.split(', '));
-console.log('Бюджет на месяц: ', getAccumulatedMonth());
-periodToAim = Math.ceil(mission/getAccumulatedMonth());
+console.log('Бюджет на месяц: ', getAccumulatedMonth(money));
+periodToAim = Math.ceil(mission/getAccumulatedMonth(money));
 console.log('Цель будет достигнута за ' + periodToAim + ' месяцев');
-budgetDay = Math.floor(getAccumulatedMonth()/30);
+budgetDay = Math.floor(getAccumulatedMonth(money)/30);
 console.log('Бюджет на день: ', budgetDay);
 
-const getStatusIncome = function(){
-if ((budgetDay > 1200) || (budgetDay === 1200)){
+function getStatusIncome(budgetForDay){
+if (budgetForDay >= 1200) {
   console.log('У вас высокий уровень дохода');
-} else if ((600 < budgetDay) && (budgetDay < 1200) || (budgetDay === 600)){
+} else if (600 <= budgetForDay) {
     console.log('У вас средний уровень дохода');
-} else if ((0 < budgetDay) && (budgetDay < 600) || (budgetDay === 0)){
+} else if (0 < budgetForDay){
     console.log('К сожалению у вас уровень дохода ниже среднего');
-} else if (budgetDay < 0){
+} else if (budgetForDay <= 0){
   console.log('Что то пошло не так');
 }
 };
 
-getStatusIncome();
+getStatusIncome(budgetDay);
 
 
-function getAccumulatedMonth(){
-  return money - expencesAmount;
-};
 
-var accumulatedMonth = getAccumulatedMonth();
+function getAccumulatedMonth(monthIncome){
+  return monthIncome-getExpensesMonth();
+}
 
-const getTargetMonth = function(){
-  return mission/accumulatedMonth;
-};
+// let accumulatedMonth = getAccumulatedMonth(money);
 
+function getTargetMonth(needToCollect){
+  return needToCollect/getAccumulatedMonth(money);
+}
