@@ -29,9 +29,17 @@ let appData = {
     appData.deposit = confirm('Есть ли у вас депозит в банке?');
     let sum = 0;
     for (let i=0; i<2; i++){
-      let keyForSum = prompt('Введите обязательную статью расходов?');    
-      appData.expenses[keyForSum] = +prompt('Во сколько это обойдется?');
-      sum += appData.expenses[keyForSum];
+      let keyForSum = prompt('Введите обязательную статью расходов?');
+      do {
+      appData.expenses[keyForSum] = prompt('Во сколько это обойдется?');    
+      if (isNumber(appData.expenses[keyForSum])) {
+        sum += +appData.expenses[keyForSum];
+      }
+      else {
+        alert("Это не число");
+      };
+      }
+      while (!isNumber(appData.expenses[keyForSum]));
   }
   // console.log(sum);
   return(sum);
@@ -50,9 +58,9 @@ appData.budget = money;
 appData.getExpensesMonth = function(){
   let sum = 0;
   for (var prop in appData.expenses) {
-   sum += appData.expenses[prop];
+   sum += +appData.expenses[prop];
 }
-  appData.expensesMonth = sum;
+   appData.expensesMonth = sum;
   return(sum);
 };
 
@@ -66,15 +74,16 @@ appData.getBudget = function(){
 
 
 appData.getTargetMonth = function(){
-  return appData.mission/appData.budgetMonth;
+  return Math.ceil(appData.mission/appData.budgetMonth);
 };
 
+
 appData.getStatusIncome = function(){
-if ((appData.budgetDay > 1200) || (appData.budgetDay === 1200)){
+if (appData.budgetDay >= 1200){
   console.log('У вас высокий уровень дохода');
-} else if ((600 < appData.budgetDay) && (appData.budgetDay < 1200) || (appData.budgetDay === 600)){
+} else if (600 <= appData.budgetDay) {
     console.log('У вас средний уровень дохода');
-} else if ((0 < appData.budgetDay) && (appData.budgetDay < 600) || (appData.budgetDay === 0)){
+} else if (0 <= appData.budgetDay) {
     console.log('К сожалению у вас уровень дохода ниже среднего');
 } else if (appData.budgetDay < 0){
   console.log('Что то пошло не так');
