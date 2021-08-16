@@ -22,36 +22,37 @@ console.log(typeof deposit);
 // console.log('Цель заработать ' + mission + ' рублей/долларов/гривен/юани');
 // console.log(addExpenses.toLowerCase());
 console.log(addExpenses.split(', '));
-console.log('Бюджет на месяц: ', getAccumulatedMonth());
-periodToAim = Math.ceil(mission/getAccumulatedMonth());
+console.log('Бюджет на месяц: ', getAccumulatedMonth(money));
+periodToAim = Math.ceil(mission/getAccumulatedMonth(money));
 console.log('Цель будет достигнута за ' + periodToAim + ' месяцев');
-budgetDay = Math.floor(getAccumulatedMonth()/30);
+budgetDay = Math.floor(getAccumulatedMonth(money)/30);
 console.log('Бюджет на день: ', budgetDay);
 
 const getStatusIncome = function(){
-if ((budgetDay > 1200) || (budgetDay === 1200)){
+if (budgetDay >= 1200){
   console.log('У вас высокий уровень дохода');
-} else if ((600 < budgetDay) && (budgetDay < 1200) || (budgetDay === 600)){
+} else if (600 <= budgetDay) {
     console.log('У вас средний уровень дохода');
-} else if ((0 < budgetDay) && (budgetDay < 600) || (budgetDay === 0)){
+} else if (0 <= budgetDay) {
     console.log('К сожалению у вас уровень дохода ниже среднего');
 } else if (budgetDay < 0){
-  console.log('Что то пошло не так');
+  console.log('Что-то пошло не так');
 }
 }
 
 getStatusIncome();
-const getExpensesMonth = function(){
-  return amount1+amount2;
+function getExpensesMonth(am1, am2){
+  return am1+am2;
 }
 
-function getAccumulatedMonth(){
-  return money-(amount1+amount2);
+function getAccumulatedMonth(mon){
+  return mon-getExpensesMonth(amount1, amount2);
 }
 
-var accumulatedMonth = getAccumulatedMonth();
+let accumulatedMonth = getAccumulatedMonth(money);
 
-const getTargetMonth = function(){
-  return mission/accumulatedMonth;
+function getTargetMonth(mis){
+
+  return mis/getAccumulatedMonth(money);
 }
 
