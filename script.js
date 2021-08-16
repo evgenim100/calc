@@ -51,7 +51,7 @@ function getAccumulatedMonth(monthIncome){
 
 let accumulatedMonth = getAccumulatedMonth(money);
 
-function getTargetMonth(needToCollect){git 
+function getTargetMonth(needToCollect){
   return needToCollect/getAccumulatedMonth(money);
 }
 
