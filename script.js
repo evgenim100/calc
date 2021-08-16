@@ -85,7 +85,7 @@ if (appData.budgetDay >= 1200){
     console.log('У вас средний уровень дохода');
 } else if (0 <= appData.budgetDay) {
     console.log('К сожалению у вас уровень дохода ниже среднего');
-} else if (appData.budgetDay < 0){
+} else {
   console.log('Что то пошло не так');
 }
 };
