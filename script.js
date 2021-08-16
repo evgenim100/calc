@@ -28,19 +28,19 @@ console.log('Цель будет достигнута за ' + periodToAim + ' �
 budgetDay = Math.floor(getAccumulatedMonth(money)/30);
 console.log('Бюджет на день: ', budgetDay);
 
-const getStatusIncome = function(){
-if (budgetDay >= 1200){
+function getStatusIncome(budgetForDay){
+if (budgetForDay >= 1200) {
   console.log('У вас высокий уровень дохода');
-} else if (600 <= budgetDay) {
+} else if (600 <= budgetForDay) {
     console.log('У вас средний уровень дохода');
-} else if (0 <= budgetDay) {
+} else if (0 < budgetForDay){
     console.log('К сожалению у вас уровень дохода ниже среднего');
-} else if (budgetDay < 0){
-  console.log('Что-то пошло не так');
+} else if (budgetForDay <= 0){
+  console.log('Что то пошло не так');
 }
-}
+};
 
-getStatusIncome();
+getStatusIncome(budgetDay);
 function getExpensesMonth(amountOfExpenses1,amountOfExpenses2){
   return amountOfExpenses1+amountOfExpenses2;
 }
