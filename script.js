@@ -93,6 +93,13 @@ appData.getBudget();
 
 console.log('Расходы за месяц: ', appData.getExpensesMonth());
 
+let periodToAim = appData.getTargetMonth();
+
+if (periodToAim < 0) console.log('Цель не будет достигнута')
+  else {
+  console.log('Цель будет достигнута за ' + periodToAim + ' месяцев');
+  };
+
 console.log('Цель будет достигнута за ' + Math.ceil(appData.mission/appData.budgetMonth) + ' месяцев');
 
 appData.getStatusIncome();
