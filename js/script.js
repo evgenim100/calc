@@ -147,19 +147,6 @@ let appData = {
       appData.income[itemIncome] = cashIncome;
     };
     });
-    // if(confirm('Есть ли у вас дополнительный источник заработка?')){
-    //    do{
-    //       itemIncome = prompt('Какой у вас дополнительный заработок?', 'Таксую');
-    //     }
-    //     while (isNumber(itemIncome));
-
-    //    do{
-    //       cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', '10000');
-    //     }
-    //     while (!isNumber(cashIncome));
-      
-    //   appData.income[itemIncome] = cashIncome;
-    // };
 
     for (let key in appData.income){
       appData.incomeMonth += +appData.income[key];
@@ -298,6 +285,8 @@ reset: function(){
 let resetBtn = document.getElementById('cancel');
 resetBtn.style.display = 'none';
 startBtn.style.display = 'block';
+
+startBtn.disabled = true;
 },
 
 btnReset: function(){
@@ -309,6 +298,9 @@ resetBtn.addEventListener('click', appData.reset.bind(appData));
 };
 
 startBtn.addEventListener('click', appData.start.bind(appData));
+
+startBtn.disabled = true;
+
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomePlus.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', appData.periodChange);
