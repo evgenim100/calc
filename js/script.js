@@ -276,17 +276,17 @@ AppData.prototype.btnReset = function(){
 };
 
 AppData.prototype.eventListeners = function(){
-  startBtn.addEventListener('click', this.start.bind(appData));
-  expensesPlus.addEventListener('click', this.addExpensesBlock);
-  incomePlus.addEventListener('click', this.addIncomeBlock);
-  periodSelect.addEventListener('input', this.periodChange);
-  salaryAmount.addEventListener('input', this.salaryAmountCheck);
+  const _this = this;
+  startBtn.addEventListener('click', _this.start.bind(appData));
+  expensesPlus.addEventListener('click', _this.addExpensesBlock);
+  incomePlus.addEventListener('click', _this.addIncomeBlock);
+  periodSelect.addEventListener('input', _this.periodChange);
+  salaryAmount.addEventListener('input', _this.salaryAmountCheck);
 };
 
 const appData = new AppData();
 appData.eventListeners();
-  
-console.log("appData", appData);
+
 
 
 
