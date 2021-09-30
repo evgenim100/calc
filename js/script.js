@@ -48,6 +48,10 @@ class AppData {
   this.expensesMonth = 0;
 }
 
+calcPeriod(){
+   return this.budgetMonth * periodSelect.value;
+}
+
 salaryAmountCheck(){
   if (salaryAmount.value === ''){
   startBtn.disabled = true; 
@@ -84,7 +88,7 @@ showResult(){
   additionalTncomeValue.value = this.addIncome.join(', ');
   targetMonthValue.value = this.getTargetMonth();
   incomePeriodValue.value = this.calcPeriod();
-  periodSelect.addEventListener('input', this.incomePeriodValueChange);
+  periodSelect.addEventListener('input', this.incomePeriodValueChange.bind(appData));
 }
 
 addExpensesBlock(){
@@ -177,10 +181,6 @@ getStatusIncome(){
     console.log('Что-то пошло не так');
   }
 } 
-
-calcPeriod(){
-  return this.budgetMonth * periodSelect.value;
-}
 
 getInfoDeposit(){
   if (this.deposit) {
