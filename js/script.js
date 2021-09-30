@@ -30,7 +30,7 @@ periodAmount = document.querySelector('.period-amount');
 
 startBtn.disabled = true;
 
-const AppData = function(){
+const AppData = () => {
   this.budget = 0;
   this.income = {};
   this.incomeMonth = 0;
@@ -44,8 +44,8 @@ const AppData = function(){
   this.budgetMonth = 0;
   this.expensesMonth = 0;
 };
-const appData = new AppData();
-AppData.prototype.salaryAmountCheck = () => {
+
+AppData.prototype.salaryAmountCheck = function(){
   if (salaryAmount.value === ''){
   startBtn.disabled = true; 
   return;
@@ -220,7 +220,7 @@ AppData.prototype.inputBlock = function(){
   expensesPlus.disabled = true;
 };
 
-AppData.prototype.reset = function(){
+ const AppData.prototype.reset = function(){
   this.budget = 0;
   this.income = {};
   this.incomeMonth = 0;
@@ -283,7 +283,7 @@ AppData.prototype.eventListeners = function(){
   salaryAmount.addEventListener('input', _this.salaryAmountCheck);
 };
 
-
+const appData = new AppData();
 appData.eventListeners();
 
 
